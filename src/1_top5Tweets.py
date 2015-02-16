@@ -13,7 +13,7 @@ tweets = tweet_json_response['response']['results']['list']
 # print(json_response);
 print(str(tweets))
 
-tweets_file = open('top_tweets.txt','w+')
+tweets_file = open('../output/top_tweets.txt','w+')
 # 
 for tweet in tweets:
     to_write = str(tweet);

@@ -20,7 +20,7 @@ hashtags = ['#SuperBowlXLIX','#Seahawks','#Patriots','#GoHawks','#GoPatriots','#
 hashTagToQuery = hashtags[random.randrange(0,len(hashtags))]
 params = urllib.urlencode({'apikey' : API_KEY, 'q' :hashTagToQuery,
                            'mintime': str(mintime), 'maxtime': str(maxtime),
-                           'new_only': '1', 'include_metrics':'0', 'limit': 5})
+                           'new_only': '1', 'include_metrics':'1', 'limit': 5})
 
 #########   create and send HTTP request
 def makeRequest(url=url, params=params):

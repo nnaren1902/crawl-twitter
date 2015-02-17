@@ -5,8 +5,8 @@ import datetime, time
 import random
 
 #########   create UNIX timestamps
-start_date = datetime.datetime(2015,01,14,0,0,0)
-end_date = datetime.datetime(2015,01,29, 0,0,0)
+start_date = datetime.datetime(2015,02,01,15,0,0)
+end_date = datetime.datetime(2015,02,01, 16,0,0)
 mintime = int(time.mktime(start_date.timetuple()))
 maxtime = int(time.mktime(end_date.timetuple()))
 
@@ -51,5 +51,4 @@ def makeRequest(request_url, request_params):
 #Choose a random tag from the above list.
 hashTagToQuery = hashtags[random.randrange(0,len(hashtags))]
 params = createParameters(API_KEY, hashTagToQuery, mintime, maxtime, new_only_bool, include_metrics_bool, tweets_limit)
-
 

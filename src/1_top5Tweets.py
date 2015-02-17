@@ -5,4 +5,4 @@ import common as common
 request = config.makeRequest(config.url, config.params);
 response = request.getresponse()
 
-common.writeResponseAsTweetsToFile(response, "../output/top_tweets.txt")
+common.writeResponseAsTweetsToFile(response,[], "../output/top_tweets.txt")

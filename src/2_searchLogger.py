@@ -36,6 +36,10 @@ for hashTag in config.hashtags:
             timeDelta = endTime - winMinTime
 '''
 
+d = {}
+for hashTag in config.hashtags:
+    d[hashTag] = 0;
+
 ###for all the hashtags
 for hashTag in config.hashtags:
     
@@ -64,6 +68,8 @@ for hashTag in config.hashtags:
         else:
             common.writeResponseAsTweetsToFile(response,tweets, "../output/tweets.txt","a")
             common.logSearchResults(hashTag, numberOfTweetsReceived, winMinTime, winMinTime+timeDelta, "../output/search_log.txt", "a")
+            #used for part 3
+            d[hashTag] = d[hashTag] + numberOfTweetsReceived
             winMinTime = winMinTime + timeDelta
             if (winMinTime + lastDelta <= endTime):
                 ##only for the end case
@@ -85,7 +91,13 @@ for hashTag in config.hashtags:
         else:
             common.writeResponseAsTweetsToFile(response,tweets, "../output/tweets.txt","a")
             common.logSearchResults(hashTag, numberOfTweetsReceived, winMinTime, endTime, "../output/search_log.txt", "a")
-                
+            d[hashTag] = d[hashTag] + numberOfTweetsReceived   
+            
+    ##write the counts to a file so that it can be used for part 3
+    
+    with open('../output/count.txt','a') as count:
+        to_write = ''+ hashTag +"\t"+ str(d[hashTag])+"\n"
+        count.write(to_write)
         
     
 '''

@@ -2,11 +2,16 @@ import json
 import datetime
 
 def extractTweetsFromResponse(response):
-    print("Extracting tweets from response...")
-    response_content = response.read()
-    tweet_json_response = json.loads(response_content)
-    tweets = tweet_json_response['response']['results']['list']
-    return tweets
+    try:
+        print("Extracting tweets from response...")
+        response_content = response.read()
+        tweet_json_response = json.loads(response_content)
+        tweets = tweet_json_response['response']['results']['list']
+        return tweets
+    except ValueError:
+        ##the last time delta may not have any tweets
+        print "No tweets for the last delta"
+        return [0]
 
 def writeResponseAsTweetsToFile(response,tweets, outputFile,mode='w+'):
     if(len(tweets) == 0):        

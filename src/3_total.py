@@ -1,4 +1,8 @@
-import 2_searchLogger as 2_searchLogger
 
-for hashTag in 
 
+total_count = {}
+with open("../output/count.txt") as f:
+    for line in f:
+        (key, val) = line.split("\t")
+        total_count[str(key)] = int(val)
+       

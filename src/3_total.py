@@ -21,7 +21,7 @@ for hashTag in popular_hashTag:
     timeDelta = 10
     winMinTime = startTime
      
-    while(winMinTime <= endTime):
+    while(winMinTime < endTime):
         config.params = config.createParameters(config.API_KEY, hashTag, winMinTime, winMinTime+timeDelta, config.new_only_bool, config.include_metrics_bool, 499)
         
         #Send Request

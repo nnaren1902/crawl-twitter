@@ -43,6 +43,9 @@ def logSearchResults(hashtag, numberOfTweets,unixStartTime,unixEndTime,outputFil
     print("Done!")
     output_file.close()
     
+def convertTimestampToDate(unixStartTime):
+    dateString = datetime.datetime.fromtimestamp(unixStartTime).strftime('%Y-%m-%d %H:%M:%S')
+    return dateString
     
 def logRateResults(hashTag, hashTag_rate, winMinTime,winMaxTime,outputFile):
     startTime = datetime.datetime.fromtimestamp(winMinTime).strftime('%H:%M:%S')

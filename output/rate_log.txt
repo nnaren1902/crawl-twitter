@@ -358,4 +358,3 @@ Hashtag: #SuperBowlXLIX 	from: 15:59:20 	to: 15:59:30 	HashTag_rate: 17
 Hashtag: #SuperBowlXLIX 	from: 15:59:30 	to: 15:59:40 	HashTag_rate: 13
 Hashtag: #SuperBowlXLIX 	from: 15:59:40 	to: 15:59:50 	HashTag_rate: 17
 Hashtag: #SuperBowlXLIX 	from: 15:59:50 	to: 16:00:00 	HashTag_rate: 19
-

@@ -59,5 +59,13 @@ def logRateResults(hashTag, hashTag_rate, winMinTime,winMaxTime,outputFile):
     print("Done")
     output_file.close()
     
+def logCorrelationResults(first_hashTag,hashTag_1_rate,second_hashTag,hashTag_2_rate,samplingTime,outputFile):
+    time_sample = datetime.datetime.fromtimestamp(samplingTime).strftime('%H:%M:%S')
+    
+    print ("logging the data for correlation")
+    with open(outputFile,'a') as out_file:
+        output_string = "First_popular_hashTag: "+first_hashTag+"\trate: "+str(hashTag_1_rate)+"\tSecond_popular_hashTag: "+second_hashTag+"\trate: "+str(hashTag_2_rate)+"\t"+str(time_sample)+"\n"
+        out_file.write(output_string)
+        
     
     

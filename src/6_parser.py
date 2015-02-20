@@ -2,15 +2,16 @@ import json
 import config as config
 import common as common
 
-inputFile = open("../output/top_tweets.txt");
+inputFile = open("../output/tweets.txt");
 
-request = config.makeRequest(config.url, config.params)
-response = request.getresponse()
-tweets = common.extractTweetsFromResponse(response)
+# request = config.makeRequest(config.url, config.params)
+# response = request.getresponse()
+# tweets = common.extractTweetsFromResponse(response)
 
-# line = inputFile.readline();
-# tweetObject = json.loads(line);
-tweetObject = tweets[0]
+line = inputFile.readline();
+
+tweetObject = json.loads(line);
+# tweetObject = tweets[0]
 
 # for key, value in tweetObject.iteritems() :
 #     print key, value

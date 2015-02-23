@@ -1,5 +1,7 @@
-import json
 import datetime
+import json
+import sys
+
 
 def extractTweetsFromResponse(response):
     try:
@@ -23,7 +25,10 @@ def writeResponseAsTweetsToFile(response,tweets, outputFile,mode='w+'):
         output_file = open(outputFile,'w+')
     json_string_for_output = ''    
     for tweet in tweets:    
-        json_string_for_output += json.dumps(tweet,separators=(",",":")) + "\n"    
+        str1 = json.dumps(tweet,separators=(",",":"))
+        decoded_str1 = str1.decode("utf8")
+        encoded_str1 = decoded_str1.encode(sys.stdout.encoding)
+        json_string_for_output += encoded_str1 + "\n"    
         
     output_file.write(json_string_for_output);
     print("Done!")

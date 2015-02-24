@@ -1,7 +1,7 @@
-#SuperBowlXLIX	82933
-#Seahawks	21828
-#Patriots	15642
-#GoHawks	12569
-#GoPatriots	3770
-#Halftime	1189
-#superbowlcommercials	3623
+#SuperBowlXLIX	82008
+#Seahawks	21752
+#Patriots	15576
+#GoHawks	12521
+#GoPatriots	3183
+#Halftime	1186
+#superbowlcommercials	3615

@@ -26,18 +26,33 @@ with open('../output/tweets.txt') as inputFileObject:
             tweetsIndexedByRetweetCount[numberOfRetweetsForCurrentTweet].append(tweetObject);
             tweetsCountIndexedByRetweetCount[numberOfRetweetsForCurrentTweet] = tweetsCountIndexedByRetweetCount[numberOfRetweetsForCurrentTweet] + 1;
             
-#             if(tweetsCountIndexedByRetweetCount[numberOfRetweetsForCurrentTweet] == 139068):
-#                     print ("");
             print "Tweet count for "+str(numberOfRetweetsForCurrentTweet)+ " retweets: "+ str(tweetsCountIndexedByRetweetCount[numberOfRetweetsForCurrentTweet])
         
 output_file = open("../output/retweetCounter.txt",'w')
 stringForOutput = "Retweet Count\t:\tNumber of Tweets\n"
+countArrayForRetweets = []
+max = 0;
 for key, value in tweetsCountIndexedByRetweetCount.iteritems() :
     stringForOutput += "\t"+str(key)+"\t:\t"+str(value)+"\n"
     print stringForOutput        
+    countArrayForRetweets.append(key)
+    if(key>max):
+        max = key
     
 output_file.write(stringForOutput);    
-output_file.close(); 
+output_file.close();
+ 
+sortedRetweetArrayWithIntervals = [0] * (max+1)
+
+for key, value in tweetsCountIndexedByRetweetCount.iteritems() :
+    sortedRetweetArrayWithIntervals[key] = value;
+
+for i in range(0,len(sortedRetweetArrayWithIntervals)):
+    stringForOutput += "\t"+str(i)+"\t:\t"+str(sortedRetweetArrayWithIntervals[i])+"\n"
+    
+print stringForOutput
+
+
 
 
 

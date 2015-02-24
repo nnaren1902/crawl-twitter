@@ -2,6 +2,9 @@ import json
 import config as config
 import common as common
 
+
+
+
 inputFile = open("../output/tweets.txt");
 
 # request = config.makeRequest(config.url, config.params)
@@ -10,7 +13,7 @@ inputFile = open("../output/tweets.txt");
 
 line = inputFile.readline();
 
-tweetObject = json.loads(line);
+tweetObject = json.loads(line,object_hook=common._decode_dict);
 # tweetObject = tweets[0]
 
 # for key, value in tweetObject.iteritems() :
@@ -26,3 +29,4 @@ output += "Author's nick: "+tweetObject["author"]["nick"]+"\n"
  
 print output 
 #Or print to file
+

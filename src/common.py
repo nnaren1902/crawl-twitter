@@ -25,10 +25,12 @@ def writeResponseAsTweetsToFile(response,tweets, outputFile,mode='w+'):
         output_file = open(outputFile,'w+')
     json_string_for_output = ''    
     for tweet in tweets:    
-        str1 = json.dumps(tweet,separators=(",",":"))
-        decoded_str1 = str1.decode("utf8")
-        encoded_str1 = decoded_str1.encode(sys.stdout.encoding)
-        json_string_for_output += encoded_str1 + "\n"    
+        str1 = json.dumps(tweet,separators=(",",":"),ensure_ascii=False).encode('utf8')
+        str1 = str1.replace("&gt;",">")
+        str1 = str1.replace("&lt;","<")
+        str1 = str1.replace("&amp;","&")
+       
+        json_string_for_output += str1 + "\n"    
         
     output_file.write(json_string_for_output);
     print("Done!")
@@ -71,6 +73,34 @@ def logCorrelationResults(first_hashTag,hashTag_1_rate,second_hashTag,hashTag_2_
     with open(outputFile,'a') as out_file:
         output_string = "First_popular_hashTag: "+first_hashTag+"\trate: "+str(hashTag_1_rate)+"\tSecond_popular_hashTag: "+second_hashTag+"\trate: "+str(hashTag_2_rate)+"\t"+str(time_sample)+"\n"
         out_file.write(output_string)
+        
+        
+        
+def _decode_list(data):
+    rv = []
+    for item in data:
+        if isinstance(item, unicode):
+            item = item.encode('utf-8')
+        elif isinstance(item, list):
+            item = _decode_list(item)
+        elif isinstance(item, dict):
+            item = _decode_dict(item)
+        rv.append(item)
+    return rv
+
+def _decode_dict(data):
+    rv = {}
+    for key, value in data.iteritems():
+        if isinstance(key, unicode):
+            key = key.encode('utf-8')
+        if isinstance(value, unicode):
+            value = value.encode('utf-8')
+        elif isinstance(value, list):
+            value = _decode_list(value)
+        elif isinstance(value, dict):
+            value = _decode_dict(value)
+        rv[key] = value
+    return rv
         
     
     

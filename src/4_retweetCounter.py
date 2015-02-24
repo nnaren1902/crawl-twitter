@@ -18,7 +18,8 @@ with open('../output/tweets.txt') as inputFileObject:
     for line in inputFile:
         tweetObject = json.loads(line);        
         if (tweetObject != 0) and (type(tweetObject) is dict) :
-            numberOfRetweetsForCurrentTweet = tweetObject["tweet"]["retweet_count"]            
+#             numberOfRetweetsForCurrentTweet = tweetObject["tweet"]["retweet_count"]
+            numberOfRetweetsForCurrentTweet = tweetObject["metrics"]["citations"]["total"]            
             if not(tweetsIndexedByRetweetCount.has_key(numberOfRetweetsForCurrentTweet)):                        
                 tweetsIndexedByRetweetCount[numberOfRetweetsForCurrentTweet] = [];
                 tweetsCountIndexedByRetweetCount[numberOfRetweetsForCurrentTweet] = 0;            
